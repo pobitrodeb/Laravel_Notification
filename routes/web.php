@@ -27,6 +27,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/send-notifications', function(){
     $user = User::find(2);
     //  $user->notify(new EmailNotification());
-    Notification::send($user, new EmailNotification());
+    // Notification::send($user, new EmailNotification());
+    $users = User::all();
+    foreach($users as $user)
+    {
+        Notification::send($users, new EmailNotification() );
+    }
     return redirect()->back();
 });
