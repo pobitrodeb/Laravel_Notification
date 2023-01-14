@@ -31,7 +31,7 @@ Route::get('/send-notifications', function(){
     $users = User::all();
     foreach($users as $user)
     {
-        Notification::send($users, new EmailNotification() );
+        Notification::send($user, new EmailNotification() );
     }
     return redirect()->back();
 });
