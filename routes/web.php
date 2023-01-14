@@ -31,7 +31,7 @@ Route::get('/send-notifications', function(){
     $users = User::all();
     foreach($users as $user)
     {
-        Notification::send($user, new EmailNotification() );
+        Notification::send($user, new EmailNotification('Pobitro', 'Web Application') );
     }
     return redirect()->back();
 });
